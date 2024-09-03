@@ -3,16 +3,16 @@
 ### A third-level heading
 **This is bold text**  
 *This is italicized text*  
-~~This is strikethrough text~~ 
+~~This is strikethrough text~~  
 **This is bold and *Italicized* Text**  
-***Bold and italicized*** 
-this is a <sub>subscript</sub> text 
-this is a <sup>superscript</sup> text 
-<rainbow>beepboop</rainbow> 
+***Bold and italicized***  
+this is a <sub>subscript</sub> text  
+this is a <sup>superscript</sup> text  
+<rainbow>beepboop</rainbow>  
 
-Text that is not a quote 
-> Text that is a quote 
-neat code block: 
+Text that is not a quote  
+> Text that is a quote  
+neat code block:  
 ```C
 if(duty == 'R'){
 		    transmission_UART_buf[4] = GarageState;
