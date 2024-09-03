@@ -1,18 +1,18 @@
 # A first-level heading
 ## A second-level heading
 ### A third-level heading
-**This is bold text**\n
-*This is italicized text*\n
-~~This is strikethrough text~~\n
-**This is bold and *Italicized* Text**\n
-***Bold and italicized***\n
-this is a <sub>subscript</sub> text\n
-this is a <sup>superscript</sup> text\n
-<rainbow>beepboop</rainbow>\n
+**This is bold text**  
+*This is italicized text*  
+~~This is strikethrough text~~ 
+**This is bold and *Italicized* Text**  
+***Bold and italicized*** 
+this is a <sub>subscript</sub> text 
+this is a <sup>superscript</sup> text 
+<rainbow>beepboop</rainbow> 
 
-Text that is not a quote\n
-> Text that is a quote\n
-neat code block:\n
+Text that is not a quote 
+> Text that is a quote 
+neat code block: 
 ```C
 if(duty == 'R'){
 		    transmission_UART_buf[4] = GarageState;
