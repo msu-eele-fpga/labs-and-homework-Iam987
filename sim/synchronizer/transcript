@@ -1,0 +1,25 @@
+vsim -voptargs=+acc work.synchronizer_tb
+# vsim -voptargs="+acc" work.synchronizer_tb 
+# Start time: 13:52:38 on Sep 05,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading work.synchronizer_tb(testbench)#1
+# Loading work.synchronizer(synchronizer_arch)#1
+run -all
+# ** Note: all tests passed!
+#    Time: 100 ns  Iteration: 0  Instance: /synchronizer_tb
+# 1
+# Break in Process check_output at C:/Users/iancr/OneDrive/Desktop/SoC FPGAs/git_Labs_HW/labs-and-homework-Iam987/sim/synchronizer/synchronizer_tb.vhd line 110
+restart -f
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+run
+# ** Note: all tests passed!
+#    Time: 100 ns  Iteration: 0  Instance: /synchronizer_tb
+# 1
+# Break in Process check_output at C:/Users/iancr/OneDrive/Desktop/SoC FPGAs/git_Labs_HW/labs-and-homework-Iam987/sim/synchronizer/synchronizer_tb.vhd line 110
+quit -sim
+# End time: 14:06:09 on Sep 05,2024, Elapsed time: 0:13:31
+# Errors: 0, Warnings: 2
