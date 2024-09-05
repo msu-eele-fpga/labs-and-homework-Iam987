@@ -20,3 +20,6 @@ run
 #    Time: 100 ns  Iteration: 0  Instance: /synchronizer_tb
 # 1
 # Break in Process check_output at C:/Users/iancr/OneDrive/Desktop/SoC FPGAs/git_Labs_HW/labs-and-homework-Iam987/sim/synchronizer/synchronizer_tb.vhd line 110
+quit -sim
+# End time: 14:06:09 on Sep 05,2024, Elapsed time: 0:13:31
+# Errors: 0, Warnings: 2
