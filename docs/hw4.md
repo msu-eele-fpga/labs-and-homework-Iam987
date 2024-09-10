@@ -5,4 +5,4 @@ In this homework, I got practice creating testbenches, defined functionallity fo
 
 
 ## Deliverables
-![Screenshot of the ouput transcript showing output of simulator](assets/IanCrittenden_HW-4_outputSC.png)
+![Screenshot of the ouput transcript showing output of simulator](./assets/IanCrittenden_HW-4_output_SC.png)
