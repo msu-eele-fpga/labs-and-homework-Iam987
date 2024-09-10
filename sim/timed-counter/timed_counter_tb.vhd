@@ -1,5 +1,5 @@
 library ieee;
-use ieee.std_logic_ll64.all;
+use ieee.std_logic_1164.all;
 use work.print_pkg.all;
 use work.assert_pkg.all;
 use work.tb_pkg.all;
@@ -11,12 +11,12 @@ architecture testbench of timed_counter_tb is
 	component timed_counter is 
 		generic (
 			clk_period : time;
-			count_time : time;
+			count_time : time
 			);
 		port (
 			clk 	: in	std_ulogic;
 			enable	: in 	boolean;
-			done	: out 	boolean;
+			done	: out 	boolean
 			);
 	end component;
 	
@@ -74,5 +74,6 @@ architecture testbench of timed_counter_tb is
 				
 				-- testbench is done :)
 				std.env.finish;
+				wait;
 		end process;
 end architecture;
