@@ -38,14 +38,17 @@ architecture vending_machine_arch of vending_machine is
 										next_state <= c10;
 									elsif (nickel = '1') then
 										next_state <= c5;
+									else next_state <= c0;
 									end if;
 					when c5 	=>	if (dime = '1') then
 										next_state <= c15;
 									elsif (nickel = '1') then
 										next_state <= c10;
+									else next_state <= c5;
 									end if;
 					when c10 	=>	if (dime = '1' or nickel = '1') then
 										next_state <= c15;
+									else next_state <= c10;
 									end if;
 					when c15	=>	next_state <= c0;
 					when others	=> next_state <= c0;
