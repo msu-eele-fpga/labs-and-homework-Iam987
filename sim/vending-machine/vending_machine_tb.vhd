@@ -118,7 +118,7 @@ begin
     -- Comparator - assert that DUV outputs and predictor outputs match
     assert_eq(amount_tb, amount_predicted, "amount is as expected");
     assert_eq(dispense_tb, dispense_predicted, "dispense is as expected");
-
+	wait;
   end process response_checker;
 
 end architecture testbench;
