@@ -11,6 +11,8 @@ end entity;
 
 architecture one_pulse_arch of one_pulse is
 	
+	signal prev_input : std_ulogic;
+	
 	begin
 	
 	PULSEGEN : process (clk) is
@@ -18,9 +20,10 @@ architecture one_pulse_arch of one_pulse is
 			if (rst = '1') then
 				pulse <= '0';
 			elsif (rising_edge(clk)) then
-				if (rising_edge(input)) then
+				if (input = not prev_input and input = '1') then
 					pulse <= '1';
 				end if;
+				prev_input <= input;
 			else
 				pulse <= '0';
 			end if;
