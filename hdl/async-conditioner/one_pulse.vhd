@@ -13,4 +13,16 @@ architecture one_pulse_arch of one_pulse is
 	
 	begin
 	
+	PULSEGEN : process (clk) is
+		begin
+			if (rst = '1') then
+				pulse <= '0';
+			elsif (rising_edge(clk)) then
+				if (rising_edge(input)) then
+					pulse <= '1';
+				end if;
+			else
+				pulse <= '0';
+			end if;
+	end process;	
 end architecture;
