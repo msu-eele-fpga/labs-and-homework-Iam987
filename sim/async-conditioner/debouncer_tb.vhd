@@ -253,7 +253,7 @@ begin
       end loop;
 
     end loop;
-
+	wait;
   end process response_checker;
 
 end architecture testbench;
