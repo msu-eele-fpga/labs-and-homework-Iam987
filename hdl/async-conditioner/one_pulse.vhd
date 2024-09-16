@@ -22,10 +22,10 @@ architecture one_pulse_arch of one_pulse is
 			elsif (rising_edge(clk)) then
 				if (input = not prev_input and input = '1') then
 					pulse <= '1';
+				else 
+					pulse <= '0';
 				end if;
 				prev_input <= input;
-			else
-				pulse <= '0';
 			end if;
 	end process;	
 end architecture;
