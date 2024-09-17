@@ -6,8 +6,8 @@ In this homework, I Created a debouncer and a one-pulse generator, then instanti
 
 ## Deliverables
 ### Debouncer Screenshot
-![Screenshot of the ouput transcript showing output of simulator Debouncer](./assets/IanCrittenden_HW-6_debounce_output_SC.png)
+![Screenshot of the ouput transcript showing output of simulator Debouncer](./assets/IanCrittenden_HW-6_debouncer_output_SC.png)
 ### One Pulse Screenshot
-![Screenshot of the ouput transcript showing output of simulator Pulse](./assets/IanCrittenden_HW-6_Pulse_output_SC.png)
+![Screenshot of the ouput transcript showing output of simulator Pulse](./assets/IanCrittenden_HW-6_pulse_output_SC.png)
 ### Async Conditioner Screenshot
-![Screenshot of the ouput transcript showing output of simulator Conditioner](./assets/IanCrittenden_HW-6_Conditioner_output_SC.png)
+![Screenshot of the ouput transcript showing output of simulator Conditioner](./assets/IanCrittenden_HW-6_conditioner_output_SC.png)
