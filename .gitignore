@@ -105,7 +105,12 @@ vsim.wlf
 *.cr.mti
 work/
 transcript
+wlft*
 
 
 # Vim swap files
 *.swp
+
+# Drawio files
+*.drawio
+*.drawio.bkp
