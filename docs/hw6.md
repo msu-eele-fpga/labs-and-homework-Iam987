@@ -11,3 +11,4 @@ In this homework, I Created a debouncer and a one-pulse generator, then instanti
 ![Screenshot of the ouput transcript showing output of simulator Pulse](./assets/IanCrittenden_HW-6_pulse_output_SC.png)
 ### Async Conditioner Screenshot
 ![Screenshot of the ouput transcript showing output of simulator Conditioner](./assets/IanCrittenden_HW-6_conditioner_output_SC.png)
+Note: these tests were done with the debouncer at 10000us debounce time.

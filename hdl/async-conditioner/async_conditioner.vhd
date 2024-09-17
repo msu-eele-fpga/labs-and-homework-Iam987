@@ -56,7 +56,7 @@ architecture async_conditioner_arch of async_conditioner is
 	DEBOUNCE1 : debouncer 
 		generic map(
 			clk_period	=> 20 ns,
-			debounce_time => 100 ms
+			debounce_time => 10000 ns
 		)
 		port map(
 			clk => clk,
