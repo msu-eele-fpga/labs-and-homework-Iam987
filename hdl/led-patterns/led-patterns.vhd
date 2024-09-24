@@ -21,7 +21,11 @@ end entity;
 
 architecture led_patterns_arch of led_patterns is
 	
-	signal base_clock 		: std_ulogic;
+	signal base_clock_half 		: std_ulogic;
+	signal base_clock_quarter	: std_ulogic;
+	signal base_clock_double	: std_ulogic;
+	signal base_clock_eighth	: std_ulogic;
+	signal base_clock_user 		: std_ulogic;
 	signal p0, p1, p2, p3, p4 	: std_ulogic_vector(7 downto 0);
 	signal cur_pat 			: std_ulogic_vector(7 downto 0);
 	signal PBsync			: std_ulogic;
@@ -36,17 +40,23 @@ architecture led_patterns_arch of led_patterns is
 	end component; 
 	
 	component Clockgen is
+		generic(
+			base_period		: in std_ulogic_vector(7 downto 0) := "00000100" --Fixed point u8.4 (0.25 sec)
+		);
 		port(
-			clk		: in std_ulogic;
-			base_period	: in std_ulogic_vector(7 downto 0);
-			base_clock	: out std_ulogic
+			clk			: in std_ulogic;
+			base_clock_half 	: out std_ulogic;
+			base_clock_quarter	: out std_ulogic;
+			base_clock_double	: out std_ulogic;
+			base_clock_eighth	: out std_ulogic;
+			base_clock_user 	: out std_ulogic
 		);
 	end component;
 	
 	component Patgen0 is
 		port(
 			rst		: in std_ulogic;
-			base_clock	: in std_ulogic;
+			pat_clock	: in std_ulogic;
 			pat		: out std_ulogic_vector(7 downto 0)
 		);
 	end component;
@@ -54,7 +64,7 @@ architecture led_patterns_arch of led_patterns is
 	component Patgen1 is
 		port(
 			rst		: in std_ulogic;
-			base_clock	: in std_ulogic;
+			pat_clock	: in std_ulogic;
 			pat		: out std_ulogic_vector(7 downto 0)
 		);
 	end component;
@@ -62,7 +72,7 @@ architecture led_patterns_arch of led_patterns is
 	component Patgen2 is
 		port(
 			rst		: in std_ulogic;
-			base_clock	: in std_ulogic;
+			pat_clock	: in std_ulogic;
 			pat		: out std_ulogic_vector(7 downto 0)
 		);
 	end component;
@@ -70,7 +80,7 @@ architecture led_patterns_arch of led_patterns is
 	component Patgen3 is
 		port(
 			rst		: in std_ulogic;
-			base_clock	: in std_ulogic;
+			pat_clock	: in std_ulogic;
 			pat		: out std_ulogic_vector(7 downto 0)
 		);
 	end component;
@@ -78,7 +88,7 @@ architecture led_patterns_arch of led_patterns is
 	component Patgen4 is
 		port(
 			rst		: in std_ulogic;
-			base_clock	: in std_ulogic;
+			pat_clock	: in std_ulogic;
 			pat		: out std_ulogic_vector(7 downto 0)
 		);
 	end component;
@@ -119,38 +129,41 @@ architecture led_patterns_arch of led_patterns is
 	);
 	
 	CLOCKMAN : Clockgen port map (
-		clk		=> clk,
-		base_period	=> "00001000", --TODO figure out what this number should be!
-		base_clock	=> base_clock
+		clk			=> clk,
+		base_clock_half		=> base_clock_half,
+		base_clock_quarter	=> base_clock_quarter,
+		base_clock_double	=> base_clock_double,
+		base_clock_eighth	=> base_clock_eighth,
+		base_clock_user		=> base_clock_user
 	);
 	
 	PATMAN0 : Patgen0 port map(
 		rst		=> rst,
-		base_clock	=> base_clock,
+		pat_clock	=> base_clock_half,
 		pat		=> p0
 	);
 	
 	PATMAN1 : Patgen1 port map(
 		rst		=> rst,
-		base_clock	=> base_clock,
+		pat_clock	=> base_clock_quarter,
 		pat		=> p1
 	);
 	
 	PATMAN2 : Patgen2 port map(
 		rst		=> rst,
-		base_clock	=> base_clock,
+		pat_clock	=> base_clock_double,
 		pat		=> p2
 	);
 	
 	PATMAN3 : Patgen3 port map(
 		rst		=> rst,
-		base_clock	=> base_clock,
+		pat_clock	=> base_clock_eighth,
 		pat		=> p3
 	);
 	
 	PATMAN4 : Patgen0 port map(
 		rst		=> rst,
-		base_clock	=> base_clock,
+		pat_clock	=> base_clock_user,
 		pat		=> p4
 	);
 	
