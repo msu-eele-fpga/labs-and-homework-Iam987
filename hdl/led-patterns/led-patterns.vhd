@@ -45,6 +45,7 @@ architecture led_patterns_arch of led_patterns is
 		);
 		port(
 			clk			: in std_ulogic;
+			rst			: in std_ulogic;
 			base_clock_half 	: out std_ulogic;
 			base_clock_quarter	: out std_ulogic;
 			base_clock_double	: out std_ulogic;
@@ -130,6 +131,7 @@ architecture led_patterns_arch of led_patterns is
 	
 	CLOCKMAN : Clockgen port map (
 		clk			=> clk,
+		rst			=> rst,
 		base_clock_half		=> base_clock_half,
 		base_clock_quarter	=> base_clock_quarter,
 		base_clock_double	=> base_clock_double,
