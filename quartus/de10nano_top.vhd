@@ -104,8 +104,8 @@ begin
 	
 	LEDPATTERNMAN : led_patterns port map (
 		clk		=> fpga_clk1_50,
-		rst		=> push_button_n(1),
-		push_button	=> push_button_n(0),
+		rst		=> not push_button_n(1),
+		push_button	=> not push_button_n(0),
 		switches	=> sw,
 		hps_led_control	=> hps_led_control,
 		base_period	=> base_period,

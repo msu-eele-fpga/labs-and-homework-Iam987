@@ -22,7 +22,7 @@ architecture Srcchooser_arch of Srcchooser is
 	signal next_state	: state_type;
 	signal Cnt		: integer := 0;
 	signal enable		: std_ulogic := '0';
-	signal done		: std_ulogic := '1';
+	signal done		: std_ulogic := '0';
 	
 	begin
 		
@@ -66,12 +66,16 @@ architecture Srcchooser_arch of Srcchooser is
 				if(rst = '1') then
 					Cnt <= 0;
 				elsif(rising_edge(clk) and enable = '1') then
-					if(Cnt > 25000000) then
+					if(Cnt > 50000000) then
 						Cnt <= 0;
 						done <= '1';
-					else 	Cnt <= Cnt + 1;
+					else 
+						Cnt <= Cnt + 1;
 						done <= '0';
 					end if;
+				elsif(rising_edge(clk) and enable = '0') then	
+					Cnt <= 0;
+					done <= '1';
 				end if;
 		end process;
 	

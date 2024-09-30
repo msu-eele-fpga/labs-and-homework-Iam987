@@ -39,11 +39,11 @@ architecture Patchooser_arch of Patchooser is
 		NEXT_STATE_LOGIC : process (switches)
 			begin
 				case (switches) is
-					when "0001" => next_state <= s0;
-					when "0010" => next_state <= s1;
-					when "0011" => next_state <= s2;
-					when "0100" => next_state <= s3;
-					when "0101" => next_state <= s4;
+					when "0000" => next_state <= s0;
+					when "0001" => next_state <= s1;
+					when "0010" => next_state <= s2;
+					when "0011" => next_state <= s3;
+					when "0100" => next_state <= s4;
 					when others => null;
 				end case;
 		end process;

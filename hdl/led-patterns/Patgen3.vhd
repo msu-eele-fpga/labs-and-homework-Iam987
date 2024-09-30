@@ -19,7 +19,7 @@ architecture Patgen3_arch of Patgen3 is
 	COUNT : process (pat_clock)
 		begin
 			if (rising_edge(pat_clock)) then
-				cnt <= cnt + 1;
+				cnt <= cnt - 1;
 			end if;
 	end process;
 	
