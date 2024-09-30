@@ -26,17 +26,17 @@ architecture Patchooser_arch of Patchooser is
 	begin
 	
 		-- State memory
-		STATE_MEMORY : process (PBsync)
+		STATE_MEMORY : process (PBsync, rst)
 			begin
 				if (rst = '1') then
 					current_state <= s0;
-				elsif (rising_edge(clk)) then
+				elsif (rising_edge(PBsync)) then
 					current_state <= next_state;
 				end if;
 		end process;
 		
 		-- Next State Logic
-		NEXT_STATE_LOGIC : process (current_state)
+		NEXT_STATE_LOGIC : process (switches)
 			begin
 				case (switches) is
 					when "0001" => next_state <= s0;
@@ -49,7 +49,7 @@ architecture Patchooser_arch of Patchooser is
 		end process;
 		
 		-- Output Logic
-		OUTPUT_LOGIC : process (current_state) 
+		OUTPUT_LOGIC : process (clk) 
 			begin
 				case (current_state) is
 					when s0 => cur_pat <= p0;

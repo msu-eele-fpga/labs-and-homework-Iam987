@@ -28,23 +28,25 @@ architecture pattern_tb_arch of pattern_tb is
 	
 	signal clk_tb			: std_ulogic := '0';
 	signal rst_tb			: std_ulogic;
-	signal push_button_tb		: std_ulogic;
-	signal switches_tb		: std_ulogic_vector(3 downto 0);
+	signal push_button_tb		: std_ulogic := '0';
+	signal switches_tb		: unsigned(3 downto 0) := "0000";
 	signal hps_led_control_tb	: boolean;
 	signal base_period_tb		: unsigned (7 downto 0);
-	signal led_reg_tb			: std_ulogic_vector(7 downto 0);
+	signal led_reg_tb		: std_ulogic_vector(7 downto 0);
 	signal led_tb			: std_ulogic_vector(7 downto 0);
 	
 	begin
 		
 		rst_tb <= '1', '0' after 50 ns;
 		clk_tb <= not clk_tb after CLK_PERIOD / 2;
+		switches_tb <= switches_tb + 1 after 4050 ns;
+		push_button_tb <= not push_button_tb after 5000 ns;
 		
 		DUT : led_patterns port map (
 					     clk 		=> clk_tb,
 					     rst 		=> rst_tb,
 					     push_button 	=> push_button_tb,
-					     switches		=> switches_tb,
+					     switches		=> std_ulogic_vector(switches_tb),
 					     hps_led_control	=> hps_led_control_tb,
 					     base_period	=> base_period_tb,
 					     led_reg		=> led_reg_tb,
