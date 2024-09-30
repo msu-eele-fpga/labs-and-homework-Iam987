@@ -24,7 +24,7 @@ architecture Clockgen_arch of Clockgen is
 	
 	begin
 		
-		basereal <= real(to_integer(unsigned(base_period))) * 0.0625;
+		basereal <= real(to_integer(unsigned(base_period))) * 0.0000625;
 		
 		process(clk,rst) is
 			begin

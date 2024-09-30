@@ -46,11 +46,11 @@ architecture led_patterns_arch of led_patterns is
 		port(
 			clk			: in std_ulogic;
 			rst			: in std_ulogic;
-			base_clock_half 	: out std_ulogic;
-			base_clock_quarter	: out std_ulogic;
-			base_clock_double	: out std_ulogic;
-			base_clock_eighth	: out std_ulogic;
-			base_clock_user 	: out std_ulogic
+			base_clock_half 	: inout std_ulogic;
+			base_clock_quarter	: inout std_ulogic;
+			base_clock_double	: inout std_ulogic;
+			base_clock_eighth	: inout std_ulogic;
+			base_clock_user 	: inout std_ulogic
 		);
 	end component;
 	
@@ -97,6 +97,8 @@ architecture led_patterns_arch of led_patterns is
 	component Patchooser is
 		port(
 			rst		: in std_ulogic;
+			clk		: in std_ulogic;
+			PBsync		: in std_ulogic;
 			switches	: in std_ulogic_vector(3 downto 0);
 			p0		: in std_ulogic_vector(6 downto 0);
 			p1		: in std_ulogic_vector(6 downto 0);
@@ -171,6 +173,8 @@ architecture led_patterns_arch of led_patterns is
 	
 	PATCHOOSEMAN : Patchooser port map (
 		rst		=> rst,
+		clk		=> clk,
+		PBsync		=> PBsync,
 		switches	=> switches,
 		p0		=> p0,
 		p1		=> p1,
