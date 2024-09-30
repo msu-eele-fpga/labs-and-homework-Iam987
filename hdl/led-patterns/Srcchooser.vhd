@@ -9,8 +9,8 @@ entity Srcchooser is
 		hps_led_control	: in boolean;
 		led_reg		: in std_ulogic_vector(7 downto 0);
 		switches	: in std_ulogic_vector(3 downto 0);
-		cur_pat		: in std_ulogic_vector(7 downto 0);
-		led		: out std_ulogic_vector(7 downto 0)
+		cur_pat		: in std_ulogic_vector(6 downto 0);
+		led		: out std_ulogic_vector(6 downto 0)
 	);
 end entity;
 

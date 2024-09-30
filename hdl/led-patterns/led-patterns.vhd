@@ -26,8 +26,8 @@ architecture led_patterns_arch of led_patterns is
 	signal base_clock_double	: std_ulogic;
 	signal base_clock_eighth	: std_ulogic;
 	signal base_clock_user 		: std_ulogic;
-	signal p0, p1, p2, p3, p4 	: std_ulogic_vector(7 downto 0);
-	signal cur_pat 			: std_ulogic_vector(7 downto 0);
+	signal p0, p1, p2, p3, p4 	: std_ulogic_vector(6 downto 0);
+	signal cur_pat 			: std_ulogic_vector(6 downto 0);
 	signal PBsync			: std_ulogic;
 	
 	component async_conditioner is
@@ -58,7 +58,7 @@ architecture led_patterns_arch of led_patterns is
 		port(
 			rst		: in std_ulogic;
 			pat_clock	: in std_ulogic;
-			pat		: out std_ulogic_vector(7 downto 0)
+			pat		: out std_ulogic_vector(6 downto 0)
 		);
 	end component;
 	
@@ -66,7 +66,7 @@ architecture led_patterns_arch of led_patterns is
 		port(
 			rst		: in std_ulogic;
 			pat_clock	: in std_ulogic;
-			pat		: out std_ulogic_vector(7 downto 0)
+			pat		: out std_ulogic_vector(6 downto 0)
 		);
 	end component;
 	
@@ -74,7 +74,7 @@ architecture led_patterns_arch of led_patterns is
 		port(
 			rst		: in std_ulogic;
 			pat_clock	: in std_ulogic;
-			pat		: out std_ulogic_vector(7 downto 0)
+			pat		: out std_ulogic_vector(6 downto 0)
 		);
 	end component;
 	
@@ -82,7 +82,7 @@ architecture led_patterns_arch of led_patterns is
 		port(
 			rst		: in std_ulogic;
 			pat_clock	: in std_ulogic;
-			pat		: out std_ulogic_vector(7 downto 0)
+			pat		: out std_ulogic_vector(6 downto 0)
 		);
 	end component;
 	
@@ -90,7 +90,7 @@ architecture led_patterns_arch of led_patterns is
 		port(
 			rst		: in std_ulogic;
 			pat_clock	: in std_ulogic;
-			pat		: out std_ulogic_vector(7 downto 0)
+			pat		: out std_ulogic_vector(6 downto 0)
 		);
 	end component;
 	
@@ -98,12 +98,12 @@ architecture led_patterns_arch of led_patterns is
 		port(
 			rst		: in std_ulogic;
 			switches	: in std_ulogic_vector(3 downto 0);
-			p0		: in std_ulogic_vector(7 downto 0);
-			p1		: in std_ulogic_vector(7 downto 0);
-			p2		: in std_ulogic_vector(7 downto 0);
-			p3		: in std_ulogic_vector(7 downto 0);
-			p4		: in std_ulogic_vector(7 downto 0);
-			cur_pat		: out std_ulogic_vector(7 downto 0)
+			p0		: in std_ulogic_vector(6 downto 0);
+			p1		: in std_ulogic_vector(6 downto 0);
+			p2		: in std_ulogic_vector(6 downto 0);
+			p3		: in std_ulogic_vector(6 downto 0);
+			p4		: in std_ulogic_vector(6 downto 0);
+			cur_pat		: out std_ulogic_vector(6 downto 0)
 		);
 	end component;
 	
@@ -114,8 +114,8 @@ architecture led_patterns_arch of led_patterns is
 			hps_led_control	: in boolean;
 			led_reg		: in std_ulogic_vector(7 downto 0);
 			switches	: in std_ulogic_vector(3 downto 0);
-			cur_pat		: in std_ulogic_vector(7 downto 0);
-			led		: out std_ulogic_vector(7 downto 0)
+			cur_pat		: in std_ulogic_vector(6 downto 0);
+			led		: out std_ulogic_vector(6 downto 0)
 		);
 	end component;
 			
@@ -187,7 +187,7 @@ architecture led_patterns_arch of led_patterns is
 		led_reg		=> led_reg,
 		switches	=> switches,
 		cur_pat		=> cur_pat,
-		led		=> led
+		led		=> led(6 downto 0)
 	);
 	
 	
