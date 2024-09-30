@@ -112,6 +112,7 @@ architecture led_patterns_arch of led_patterns is
 	component Srcchooser is
 		port(
 			rst		: in std_ulogic;
+			clk		: in std_ulogic;
 			PBsync		: in std_ulogic;
 			hps_led_control	: in boolean;
 			led_reg		: in std_ulogic_vector(7 downto 0);
@@ -186,6 +187,7 @@ architecture led_patterns_arch of led_patterns is
 	
 	SRCCHOOSEMAN : Srcchooser port map (
 		rst		=> rst,
+		clk		=> clk,
 		PBsync		=> PBsync,
 		hps_led_control	=> hps_led_control,
 		led_reg		=> led_reg,
