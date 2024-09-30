@@ -26,6 +26,7 @@ architecture led_patterns_arch of led_patterns is
 	signal base_clock_double	: std_ulogic;
 	signal base_clock_eighth	: std_ulogic;
 	signal base_clock_user 		: std_ulogic;
+	signal Blinker			: std_ulogic;
 	signal p0, p1, p2, p3, p4 	: std_ulogic_vector(6 downto 0);
 	signal cur_pat 			: std_ulogic_vector(6 downto 0);
 	signal PBsync			: std_ulogic;
@@ -196,5 +197,15 @@ architecture led_patterns_arch of led_patterns is
 		led		=> led(6 downto 0)
 	);
 	
+	BLINKYMAN : process (base_clock_user) 
+		begin
+			if(rst = '1') then
+				Blinker <= '0';
+			elsif(rising_edge(base_clock_user)) then
+				Blinker <= not Blinker;
+			end if;
+	end process;
+	
+	led(7) <= Blinker;
 	
 end architecture;

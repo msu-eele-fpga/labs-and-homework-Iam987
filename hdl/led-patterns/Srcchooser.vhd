@@ -21,8 +21,8 @@ architecture Srcchooser_arch of Srcchooser is
 	signal current_state	: state_type;
 	signal next_state	: state_type;
 	signal Cnt		: integer := 0;
-	signal enable		: boolean := false;
-	signal done		: boolean := true;
+	signal enable		: std_ulogic := '0';
+	signal done		: std_ulogic := '1';
 	
 	begin
 		
@@ -33,9 +33,10 @@ architecture Srcchooser_arch of Srcchooser is
 					current_state <= s0;
 				elsif(rising_edge(PBsync)) then
 					current_state <= next_state;
-					enable <= true;
-				elsif(done = true) then
-					enable <= false;
+					enable <= '1';
+				end if;
+				if(done = '1') then
+					enable <= '0';
 				end if;
 		end process;
 		
@@ -52,7 +53,7 @@ architecture Srcchooser_arch of Srcchooser is
 		OUTPUT_LOGIC : process(current_state, done)
 			begin
 				case(current_state) is
-					when s0 => if(done = false) then
+					when s0 => if(done = '0') then
 							led <= "000" & switches;
 						   else led <= cur_pat;
 						   end if;
@@ -64,12 +65,12 @@ architecture Srcchooser_arch of Srcchooser is
 			begin
 				if(rst = '1') then
 					Cnt <= 0;
-				elsif(rising_edge(clk) and enable = true) then
+				elsif(rising_edge(clk) and enable = '1') then
 					if(Cnt > 25000000) then
 						Cnt <= 0;
-						done <= true;
+						done <= '1';
 					else 	Cnt <= Cnt + 1;
-						done <= false;
+						done <= '0';
 					end if;
 				end if;
 		end process;

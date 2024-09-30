@@ -20,11 +20,9 @@ end entity;
 architecture Clockgen_arch of Clockgen is
 	
 	signal c12, c14, c2, c18, cu : integer;
-	signal basereal	: real range 0.00 to 10.00;
+	constant basereal	: real := real(to_integer(unsigned(base_period))) * 0.0625;
 	
 	begin
-		
-		basereal <= real(to_integer(unsigned(base_period))) * 0.0000625;
 		
 		process(clk,rst) is
 			begin
