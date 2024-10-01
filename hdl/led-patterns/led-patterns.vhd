@@ -26,6 +26,7 @@ architecture led_patterns_arch of led_patterns is
 	signal base_clock_double	: std_ulogic;
 	signal base_clock_eighth	: std_ulogic;
 	signal base_clock_user 		: std_ulogic;
+	signal base_clock 		: std_ulogic;
 	signal Blinker			: std_ulogic;
 	signal p0, p1, p2, p3, p4 	: std_ulogic_vector(6 downto 0);
 	signal cur_pat 			: std_ulogic_vector(6 downto 0);
@@ -51,7 +52,8 @@ architecture led_patterns_arch of led_patterns is
 			base_clock_quarter	: inout std_ulogic;
 			base_clock_double	: inout std_ulogic;
 			base_clock_eighth	: inout std_ulogic;
-			base_clock_user 	: inout std_ulogic
+			base_clock_user 	: inout std_ulogic;
+			base_clock		: inout std_ulogic
 		);
 	end component;
 	
@@ -140,7 +142,8 @@ architecture led_patterns_arch of led_patterns is
 		base_clock_quarter	=> base_clock_quarter,
 		base_clock_double	=> base_clock_double,
 		base_clock_eighth	=> base_clock_eighth,
-		base_clock_user		=> base_clock_user
+		base_clock_user		=> base_clock_user,
+		base_clock		=> base_clock
 	);
 	
 	PATMAN0 : Patgen0 port map(
@@ -197,11 +200,11 @@ architecture led_patterns_arch of led_patterns is
 		led		=> led(6 downto 0)
 	);
 	
-	BLINKYMAN : process (base_clock_user) 
+	BLINKYMAN : process (base_clock) 
 		begin
 			if(rst = '1') then
 				Blinker <= '0';
-			elsif(rising_edge(base_clock_user)) then
+			elsif(rising_edge(base_clock)) then
 				Blinker <= not Blinker;
 			end if;
 	end process;
