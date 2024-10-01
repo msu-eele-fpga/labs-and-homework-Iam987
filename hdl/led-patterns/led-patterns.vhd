@@ -167,7 +167,7 @@ architecture led_patterns_arch of led_patterns is
 		pat		=> p3
 	);
 	
-	PATMAN4 : Patgen0 port map(
+	PATMAN4 : Patgen4 port map(
 		rst		=> rst,
 		pat_clock	=> base_clock_user,
 		pat		=> p4

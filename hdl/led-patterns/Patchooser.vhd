@@ -36,8 +36,11 @@ architecture Patchooser_arch of Patchooser is
 		end process;
 		
 		-- Next State Logic
-		NEXT_STATE_LOGIC : process (switches)
+		NEXT_STATE_LOGIC : process (switches, rst)
 			begin
+				if(rst = '1') then
+					next_state <= s0;
+				end if;
 				case (switches) is
 					when "0000" => next_state <= s0;
 					when "0001" => next_state <= s1;

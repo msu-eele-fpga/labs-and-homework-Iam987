@@ -17,12 +17,19 @@ end entity;
 
 architecture Srcchooser_arch of Srcchooser is
 	
-	type state_type is (s0, s1);
+	type state_type is (s0, s1, waiting);
 	signal current_state	: state_type;
 	signal next_state	: state_type;
-	signal Cnt		: integer := 0;
 	signal enable		: std_ulogic := '0';
 	signal done		: std_ulogic := '0';
+	
+	component Timer1Sec is
+		port(
+			clk	: in std_ulogic;
+			enable	: in std_ulogic;
+			done	: out std_ulogic
+		);
+	end component;
 	
 	begin
 		
@@ -32,11 +39,10 @@ architecture Srcchooser_arch of Srcchooser is
 				if(rst = '1') then
 					current_state <= s0;
 				elsif(rising_edge(PBsync)) then
-					current_state <= next_state;
-					enable <= '1';
+					current_state <= waiting;
 				end if;
 				if(done = '1') then
-					enable <= '0';
+					current_state <= next_state;
 				end if;
 		end process;
 		
@@ -53,30 +59,26 @@ architecture Srcchooser_arch of Srcchooser is
 		OUTPUT_LOGIC : process(current_state, done)
 			begin
 				case(current_state) is
-					when s0 => if(done = '0') then
-							led <= "000" & switches;
-						   else led <= cur_pat;
-						   end if;
+					when waiting => led <= "000" & switches;
+					when s0 => led <= cur_pat;
 					when s1 => led <= led_reg(6 downto 0);
 				end case;
 		end process;
 	
-		TIMER : process(clk)
+		TIMEHELP : process(clk)
 			begin
-				if(rst = '1') then
-					Cnt <= 0;
-				elsif(rising_edge(clk) and enable = '1') then
-					if(Cnt > 50000000) then
-						Cnt <= 0;
-						done <= '1';
-					else 
-						Cnt <= Cnt + 1;
-						done <= '0';
-					end if;
-				elsif(rising_edge(clk) and enable = '0') then	
-					Cnt <= 0;
-					done <= '1';
+				if(current_state = waiting) then
+					enable <= '1';
+				end if;
+				if(done = '1') then
+					enable <= '0';
 				end if;
 		end process;
+		
+		TIMER : Timer1Sec port map(
+			clk => clk,
+			enable => enable,
+			done => done
+		);
 	
 end architecture;
