@@ -114,3 +114,6 @@ wlft*
 # Drawio files
 *.drawio
 *.drawio.bkp
+
+# Random
+Random/

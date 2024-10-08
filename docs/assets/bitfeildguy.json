@@ -1,0 +1,4 @@
+
+{reg: [
+  {bits: 8, name: 'led_reg',attr: 'Pattern', type:4},
+  {bits: 24, name: 'beepis', attr: [0]}]}
