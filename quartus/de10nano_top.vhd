@@ -196,9 +196,9 @@ end entity de10nano_top;
 
 architecture de10nano_arch of de10nano_top is
 	
-	signal hps_led_control 	: boolean := false;
-	signal base_period	: unsigned(7 downto 0) := "00000100";
-	signal led_reg		: std_ulogic_vector(7 downto 0);
+	--signal hps_led_control 	: boolean := false;
+	--signal base_period	: unsigned(7 downto 0) := "00000100";
+	--signal led_reg		: std_ulogic_vector(7 downto 0);
 	
 	component led_patterns is
 		generic (
@@ -283,22 +283,25 @@ architecture de10nano_arch of de10nano_top is
 			memory_mem_dm                   : out   std_logic_vector(3 downto 0);
 			memory_oct_rzqin                : in    std_logic;
 			clk_clk                         : in    std_logic;
-			reset_reset_n                   : in    std_logic
+			reset_reset_n                   : in    std_logic;
+			led_patterns_push_button        : in    std_logic                     := 'X';             -- push_button
+			led_patterns_switches           : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- switches
+			led_patterns_led                : out   std_logic_vector(7 downto 0)                      -- led
 		);
 	end component soc_system;
 	
 begin
 	
-	LEDPATTERNMAN : led_patterns port map (
-		clk		=> fpga_clk1_50,
-		rst		=> not push_button_n(1),
-		push_button	=> not push_button_n(0),
-		switches	=> sw,
-		hps_led_control	=> hps_led_control,
-		base_period	=> base_period,
-		led_reg		=> led_reg,
-		led		=> led
-	);
+	--LEDPATTERNMAN : led_patterns port map (
+	--	clk		=> fpga_clk1_50,
+	--	rst		=> not push_button_n(1),
+	--	push_button	=> not push_button_n(0),
+	--	switches	=> sw,
+	--	hps_led_control	=> hps_led_control,
+	--	base_period	=> base_period,
+	--	led_reg		=> led_reg,
+	--	led		=> led
+	--);
 
 	u0 : component soc_system port map(
 			-- ethernet
@@ -382,7 +385,10 @@ begin
 			memory_oct_rzqin   => hps_ddr3_rzq,
 			
 			clk_clk       => fpga_clk1_50,
-			reset_reset_n => push_button_n(1)-- hook up to your reset signal; note that reset_reset_n is *active-low*
+			reset_reset_n => push_button_n(1), -- hook up to your reset signal; note that reset_reset_n is *active-low*
+			led_patterns_push_button => push_button_n(0),
+			led_patterns_switches => sw,
+			led_patterns_led => led			
 	);
 
 end architecture de10nano_arch;
