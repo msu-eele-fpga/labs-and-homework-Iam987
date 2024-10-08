@@ -67,9 +67,9 @@ architecture led_patterns_avalon_arch of led_patterns_avalon is
 		begin
 			if(rising_edge(clk) and avs_read = '1') then 
 				case avs_address is
-					when "00"	=> avs_readdata <= To_Std_Logic(hps_led_control);
-					when "01"	=> avs_readdata <= std_logic_vector(base_period);
-					when "10"	=> avs_readdata <= std_logic_vector(led_reg);
+					when "00"	=> avs_readdata <= "0000000000000000000000000000000" & To_Std_Logic(hps_led_control);
+					when "01"	=> avs_readdata <= "000000000000000000000000" & std_logic_vector(base_period);
+					when "10"	=> avs_readdata <= "000000000000000000000000" & std_logic_vector(led_reg);
 					when others	=> avs_readdata <= (others => '0'); -- return zeros for unused registers
 				end case;
 			end if;
@@ -84,8 +84,8 @@ architecture led_patterns_avalon_arch of led_patterns_avalon is
 			elsif (rising_edge(clk) and avs_write = '1') then
 				case avs_address is
 					when "00"	=> hps_led_control <= To_Bool(avs_writedata);
-					when "01"	=> base_period <= unsigned(avs_writedata);
-					when "10"	=> led_reg <= std_ulogic_vector(avs_writedata);
+					when "01"	=> base_period <= unsigned(avs_writedata(7 downto 0));
+					when "10"	=> led_reg <= std_ulogic_vector(avs_writedata(7 downto 0));
 					when others	=> null;
 				end case;
 			end if;
