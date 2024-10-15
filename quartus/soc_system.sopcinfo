@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="soc_system" version="1.0" fabric="QSYS">
  <!-- Format version 23.1 993 (Future versions may contain additional information.) -->
- <!-- 2024.10.14.16:42:24 -->
+ <!-- 2024.10.15.13:47:56 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1728945743</value>
+  <value>1729021675</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -71847,16 +71847,16 @@ parameters are a RESULT of the module parameters. -->
    <type>conduit</type>
    <isStart>false</isStart>
    <port>
-    <name>push_button</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>push_button</role>
-   </port>
-   <port>
     <name>switches</name>
     <direction>Input</direction>
     <width>4</width>
     <role>switches</role>
+   </port>
+   <port>
+    <name>push_button</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>push_button</role>
    </port>
    <port>
     <name>led</name>

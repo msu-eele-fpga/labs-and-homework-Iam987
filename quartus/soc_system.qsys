@@ -38,6 +38,14 @@
          type = "int";
       }
    }
+   element led_patterns_avalon_0.avalon_slave_0
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
    element master_0
    {
       datum _sortIndex

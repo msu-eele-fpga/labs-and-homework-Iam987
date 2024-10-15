@@ -22,6 +22,8 @@ architecture Srcchooser_arch of Srcchooser is
 	signal next_state	: state_type;
 	signal enable		: std_ulogic := '0';
 	signal done		: std_ulogic := '0';
+	signal toggle		: std_ulogic;
+	signal check		: std_ulogic;
 	
 	component Timer1Sec is
 		port(
@@ -34,15 +36,19 @@ architecture Srcchooser_arch of Srcchooser is
 	begin
 		
 		-- State Memory
-		STATE_MEMORY : process(PBsync, done)
+		STATE_MEMORY : process(PBsync, done, toggle)
 			begin
 				if(rst = '1') then
 					current_state <= s0;
+					check <= toggle;
 				elsif(rising_edge(PBsync)) then
 					current_state <= waiting;
 				end if;
 				if(done = '1') then
 					current_state <= next_state;
+				elsif(toggle = not check) then
+					current_state <= next_state;
+					check <= toggle;
 				end if;
 		end process;
 		
@@ -53,6 +59,7 @@ architecture Srcchooser_arch of Srcchooser is
 					when false => next_state <= s0;
 					when true => next_state <= s1;
 				end case;
+				toggle <= not toggle;
 		end process;
 		
 		-- Output Logic
