@@ -42,10 +42,8 @@ architecture led_patterns_arch of led_patterns is
 	end component; 
 	
 	component Clockgen is
-		generic(
-			base_period		: in std_ulogic_vector(7 downto 0) := "00000100" --Fixed point u8.4 (0.25 sec)
-		);
 		port(
+			base_period		: in std_ulogic_vector(7 downto 0);
 			clk			: in std_ulogic;
 			rst			: in std_ulogic;
 			base_clock_half 	: inout std_ulogic;
@@ -136,6 +134,7 @@ architecture led_patterns_arch of led_patterns is
 	);
 	
 	CLOCKMAN : Clockgen port map (
+		base_period		=> std_ulogic_vector(base_period),
 		clk			=> clk,
 		rst			=> rst,
 		base_clock_half		=> base_clock_half,
@@ -207,8 +206,12 @@ architecture led_patterns_arch of led_patterns is
 			elsif(rising_edge(base_clock)) then
 				Blinker <= not Blinker;
 			end if;
+			if(not hps_led_control) then
+				led(7) <= Blinker;
+			else 
+				led(7) <= led_reg(7);
+			end if;
 	end process;
 	
-	led(7) <= Blinker;
 	
 end architecture;

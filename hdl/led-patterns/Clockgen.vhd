@@ -3,10 +3,8 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity Clockgen is
-generic(
-		base_period		: in std_ulogic_vector(7 downto 0) := "00000100" --Fixed point u8.4 (0.25 sec)
-	);
 	port(
+		base_period		: in std_ulogic_vector(7 downto 0);
 		clk			: in std_ulogic;
 		rst			: in std_ulogic;
 		base_clock_half 	: inout std_ulogic;
@@ -21,9 +19,12 @@ end entity;
 architecture Clockgen_arch of Clockgen is
 	
 	signal c12, c14, c2, c18, cu, cb : integer;
-	constant basereal	: real := real(to_integer(unsigned(base_period))) * 0.0625;
+	constant sysclockrate : unsigned(24 downto 0)	:= "1011111010111100001000000";
+	signal baseclk : unsigned(32 downto 0);
 	
 	begin
+		
+		baseclk <= shift_right(sysclockrate * unsigned(base_period),4);
 		
 		process(clk,rst) is
 			begin
@@ -41,32 +42,32 @@ architecture Clockgen_arch of Clockgen is
 					base_clock_user 	<= '0';
 					base_clock 		<= '0';
 				elsif(rising_edge(clk)) then
-					if(c12 > integer(25000000.0 * basereal * 0.5)) then
+					if(c12 > to_integer(shift_right(baseclk,1))) then
 						c12 <= 0;
 						base_clock_half <= not base_clock_half;
 					else c12 <= c12 + 1;
 					end if;
-					if(c14 > integer(25000000.0 * basereal * 0.25)) then
+					if(c14 > to_integer(shift_right(baseclk,2))) then
 						c14 <= 0;
 						base_clock_quarter <= not base_clock_quarter;
 					else c14 <= c14 + 1;
 					end if;
-					if(c2 > integer(25000000.0 * basereal * 2.0)) then
+					if(c2 > to_integer(shift_left(baseclk,1))) then
 						c2 <= 0;
 						base_clock_double <= not base_clock_double;
 					else c2 <= c2 + 1;
 					end if;
-					if(c18 > integer(25000000.0 * basereal * 0.125)) then
+					if(c18 > to_integer(shift_right(baseclk,3))) then
 						c18 <= 0;
 						base_clock_eighth <= not base_clock_eighth;
 					else c18 <= c18 + 1;
 					end if;
-					if(cb > integer(25000000.0 * basereal)) then
+					if(cb > to_integer(baseclk)) then
 						cb <= 0;
 						base_clock <= not base_clock;
 					else cb <= cb + 1;
 					end if;
-					if(cu > integer(25000000.0 * basereal * 0.0625)) then
+					if(cu > to_integer(shift_left(baseclk,4))) then
 						cu <= 0;
 						base_clock_user <= not base_clock_user;
 					else cu <= cu + 1;

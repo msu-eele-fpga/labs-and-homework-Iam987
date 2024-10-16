@@ -23,9 +23,9 @@ end entity;
 
 architecture led_patterns_avalon_arch of led_patterns_avalon is
 	
-	signal hps_led_control	: boolean;
-	signal base_period	: unsigned(7 downto 0);
-	signal led_reg		: std_ulogic_vector(7 downto 0);
+	signal hps_led_control	: boolean := false;
+	signal base_period	: unsigned(7 downto 0) := "00000100";
+	signal led_reg		: std_ulogic_vector(7 downto 0) := "00000000";
 	
 	function To_Std_Logic(L : boolean) return std_logic_vector is
 		begin
