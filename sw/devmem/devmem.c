@@ -46,8 +46,7 @@ int main(int argc, char **argv){
 	if(page_virtual_addr == MAP_FAILED){
 	        fprintf(stderr, "failed to map memory.\n");
 	        return 1;
-	}
-	
+	}	
 	printf("page_virtual_addr = %p\n", page_virtual_addr);
 	
 	//The address we want to access might not be page-aligned. Since we mapped a page-aligned address, we need our target address' offet from the page boundary. Using this offset, we can copute the virtual address corresponding to our physical target address (ADDRESS).
