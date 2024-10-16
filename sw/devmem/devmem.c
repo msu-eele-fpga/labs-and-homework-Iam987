@@ -34,6 +34,20 @@ int main(int argc, char **argv){
 		fprintf(stderr, "failed to open /dev/mem.\n");
 		return 1;
 	}
+	
+	//mmap needs to map memory at page boundaries; 
+	uint32_t page_aligned_addr = ADDRESS & ~(PAGE_SIZE - 1);
+	printf("memory addresses:\n");
+	printf("---------------------------------------------------------------------------\n");
+	printf("page aligned address = 0x%x\n",page_aligned_addr);
+	
+	//map a page of physical memory into virtual memory. https://www.man7.org/linux/man-pages/man2/mmap.2.html
+	uint32_t *page_virtual_addr = (uint32_t *)mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, page_aligned_addr);
+	if(page_virtual_addr == MAP_FAILED){
+	        fprintf(stderr, "failed to map memory.\n");
+	        return 1;
+	}
+	
 	printf("page_virtual_addr = %p\n", page_virtual_addr);
 	
 	//The address we want to access might not be page-aligned. Since we mapped a page-aligned address, we need our target address' offet from the page boundary. Using this offset, we can copute the virtual address corresponding to our physical target address (ADDRESS).
@@ -41,7 +55,7 @@ int main(int argc, char **argv){
 	printf("offset in page = 0x%x\n",offset_in_page);
 	
 	//Compute the virtual address corresponding to ADDRESS.
-	volatile uint32_t *target_virtual_addr = page_virtual_addr + offset_in_page/sizeof(uint32_t*);
+	volatile uint32_t *target_virtual_addr = page_virtual_addr + offset_in_page/sizeof(uint32_t *);
 	printf("target_virtual_addr = %p\n", target_virtual_addr);
 	printf("-----------------------------------------------------------------------------\n");
 	
@@ -50,7 +64,7 @@ int main(int argc, char **argv){
 		*target_virtual_addr = VALUE;
 	}
 	else{
-		printf("\nvalue at 0x%x = 0x%x\n, ADDRESS, *target_virtual_addr);
+		printf("\nvalue at 0x%x = 0x%x\n", ADDRESS, *target_virtual_addr);
 	}
 	return 0;
 }
