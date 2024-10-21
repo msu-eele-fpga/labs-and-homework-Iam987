@@ -46,6 +46,6 @@
 16: Command: grep -P "FPGAs are .ot|ower|ile"  fpgas.txt 
 ### Screenshot:
 
-17: Command: grep -P "FPGAs are .ot|ower|ile"  fpgas.txt 
+17: Command: 
 ### Screenshot:
 
