@@ -46,6 +46,24 @@
 16: Command: grep -P "FPGAs are .ot|ower|ile"  fpgas.txt 
 ### Screenshot:
 
-17: Command: 
+17: Command: grep -c -P "^\s*\-\-" ../../hdl/*/*
+### Screenshot:
+
+18: Command: ls > ls-output.txt; cat ls-output.txt
+### Screenshot:
+
+19: Command: sudo dmesg | grep "CPU topo"
+### Screenshot:
+
+20: Command: find ../../hdl/*/* -iname '*vhd' | grep -c "vhd"
+### Screenshot:
+
+21: Command: grep "\-\-" ../../hdl/*/* | grep -c "\-\-"
+### Screenshot:
+
+22: Command: grep -n "FPGAs" fpgas.txt | cut -d: -f1
+### Screenshot:
+
+23: Command: du -h * | sort -h -r | head -n 3
 ### Screenshot:
 
