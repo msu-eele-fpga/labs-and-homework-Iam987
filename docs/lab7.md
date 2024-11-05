@@ -4,7 +4,7 @@
 
 ## Deliverables
 ### Example of devmem Custom C Code setting registers
-![devem1CustomCCode](./assets/IanCrittenden_Lab-7_SettingRegistersWithCustomCCode_SC.png)
+![devem1CustomCCode](./assets/IanCrittenden_LAB-7_SettingRegistersWithCustomCCode_SC.png)
 ##
 ### Questions
 >What hex value did you write to base_period to have a 0.125 second base period?
