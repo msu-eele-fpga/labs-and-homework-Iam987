@@ -37,67 +37,65 @@ void dvmemusage(){
 	fprintf(stderr, " VALUE The optional value to write to ADDRESS; if not given, a read will be performed.\n\n");
 }
 
-void when_exit(){
-	devmem(0xff200000, 0x0);
-}
-
-int devmem(int Addr, char **val){
+int devmem(char *Addr, char *val){
 	//This is the size of the page of memory in the system. (4096 bytes probably)
 	const size_t PAGE_SIZE = sysconf(_SC_PAGE_SIZE);
 	
-	if(Addr == 1){ //No args given, print usage text and exit val[1] is first actual arg
-		dvmemusage();
-		return 1;
-	}
 	
 	//If value arg given, perform a write opp
-	bool is_write = (Addr == 3) ? true : false;
+	bool is_write = true;
 	
-	const uint32_t ADDRESS = strtoul(val[1], NULL, 0);
+	const uint32_t ADDRESS = strtoul(Addr, NULL, 0);
 	
 	int fd = open("/dev/mem", O_RDWR | O_SYNC);
 	if (fd == -1){
-		fprintf(stderr, "failed to open /dev/mem.\n");
+		//fprintf(stderr, "failed to open /dev/mem.\n");
 		return 1;
 	}
 	
 	//mmap needs to map memory at page boundaries; 
 	uint32_t page_aligned_addr = ADDRESS & ~(PAGE_SIZE - 1);
-	printf("memory addresses:\n");
-	printf("---------------------------------------------------------------------------\n");
-	printf("page aligned address = 0x%x\n",page_aligned_addr);
+	//printf("memory addresses:\n");
+	//printf("---------------------------------------------------------------------------\n");
+	//printf("page aligned address = 0x%x\n",page_aligned_addr);
 	
 	//map a page of physical memory into virtual memory. https://www.man7.org/linux/man-pages/man2/mmap.2.html
 	uint32_t *page_virtual_addr = (uint32_t *)mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, page_aligned_addr);
 	if(page_virtual_addr == MAP_FAILED){
-	        fprintf(stderr, "failed to map memory.\n");
+	       // fprintf(stderr, "failed to map memory.\n");
 	        return 1;
 	}	
-	printf("page_virtual_addr = %p\n", page_virtual_addr);
+	//printf("page_virtual_addr = %p\n", page_virtual_addr);
 	
 	//The address we want to access might not be page-aligned. Since we mapped a page-aligned address, we need our target address' offet from the page boundary. Using this offset, we can copute the virtual address corresponding to our physical target address (ADDRESS).
 	uint32_t offset_in_page = ADDRESS & (PAGE_SIZE - 1);
-	printf("offset in page = 0x%x\n",offset_in_page);
+	//printf("offset in page = 0x%x\n",offset_in_page);
 	
 	//Compute the virtual address corresponding to ADDRESS.
 	volatile uint32_t *target_virtual_addr = page_virtual_addr + offset_in_page/sizeof(uint32_t *);
-	printf("target_virtual_addr = %p\n", target_virtual_addr);
-	printf("-----------------------------------------------------------------------------\n");
+	//printf("target_virtual_addr = %p\n", target_virtual_addr);
+	//printf("-----------------------------------------------------------------------------\n");
 	
 	if(is_write){
-		const uint32_t VALUE = strtoul(val[2], NULL, 0);
+		const uint32_t VALUE = strtoul(val, NULL, 0);
 		*target_virtual_addr = VALUE;
 	}
 	else{
-		printf("\nvalue at 0x%x = 0x%x\n", ADDRESS, *target_virtual_addr);
+		//printf("\nvalue at 0x%x = 0x%x\n", ADDRESS, *target_virtual_addr);
 	}
 	return 0;
 }
 
+void when_exit(){
+	devmem("0xff200000", "0x0");
+}
+
 int main(int argc, char **argv){
+	devmem("0xff200000","0x1");
 	usage();
 	dvmemusage();
+	char n;
+	scanf("%c", &n);
 	atexit(when_exit);
-	devmem(0xff200000,0x1);
 }
 
