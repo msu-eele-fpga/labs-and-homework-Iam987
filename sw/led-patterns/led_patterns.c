@@ -15,35 +15,29 @@
 #include <getopt.h> //for handling options
 
 void usage(){
-	fprintf(stderr, "led_patterns: led_patterns [-options] [filename/pattern+durration,...]\n");
-	fprintf(stderr, "Control the leds on the de10nano with software\n");
-	fprintf(stderr, "\nWithout arguments, `led_patterns` will display this help text\n");
-	fprintf(stderr, "\nOptions:\n
-	-h Displays this help text\n
-	-v Will show the patterns and durrations as they are set on the device\n
-	-p Specify patterns and times as arguments in the terminal (loops until termination)\n
-	-f Specify file name containing patterns and durrations (loops until termination)\n");
+	fprintf(stderr, "\n\nled_patterns: led_patterns [-options] [filename/pattern+durration,...]\n");
+	fprintf(stderr, "\tControl the leds on the de10nano with software\n");
+	fprintf(stderr, "\n\tWithout arguments, `led_patterns` will display this help text\n");
+	fprintf(stderr, "\nOptions:\n"
+	"\t-h Displays this help text\n"
+	"\t-v Will show the patterns and durrations as they are set on the device\n"
+	"\t-p Specify patterns and times as arguments in the terminal (loops until termination)\n"
+	"\t-f Specify file name containing patterns and durrations (loops until termination)\n\n");
 }
-void dvmemusage(){
-	fprintf(stderr, "devmem ADDRESS [VALUE]\n");
+void dvmemusage(){
+	fprintf(stderr, "\n\ndevmem ADDRESS [VALUE]\n");
 	fprintf(stderr, " devmem can be used to read/write to physical memory via the /dev/mem device.\n");
 	fprintf(stderr, " devmem will only read/write 32-bit values\n\n");
 	fprintf(stderr, " Arguments:\n");
 	fprintf(stderr, " ADDRESS The address to read/write to/from\n");
-	fprintf(stderr, " VALUE The optional value to write to ADDRESS; if not given, a read will be performed.\n");
-}
-int main(int argc, char **argv){
-	usage();
-	dvmemusage();
-	
-	//devmem(0xff200000,0x0);
+	fprintf(stderr, " VALUE The optional value to write to ADDRESS; if not given, a read will be performed.\n\n");
 }
 
-void atexit(void){
+void when_exit(){
 	//TODO set fpga back to hardware mode
 }
 
-void devmem(int Addr, char **val){
+int devmem(int Addr, char **val){
 	//This is the size of the page of memory in the system. (4096 bytes probably)
 	const size_t PAGE_SIZE = sysconf(_SC_PAGE_SIZE);
 	
@@ -93,5 +87,13 @@ void devmem(int Addr, char **val){
 	else{
 		printf("\nvalue at 0x%x = 0x%x\n", ADDRESS, *target_virtual_addr);
 	}
-	return;
+	return 0;
 }
+
+int main(int argc, char **argv){
+	usage();
+	dvmemusage();
+	atexit(when_exit);
+	//devmem(0xff200000,0x0);
+}
+
