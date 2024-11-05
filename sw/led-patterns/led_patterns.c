@@ -11,5 +11,5 @@
 #include <stdbool.h>
 
 int main(void){
-	system("echo devmem1 0xff200000 0x0
+	system("devmem1 0xff200000 0x0");
 }
