@@ -94,8 +94,8 @@ int main(int argc, char **argv){
 	devmem("0xff200000","0x1");
 	usage();
 	dvmemusage();
+	atexit(when_exit); //Maybe use signal interrupts for ^C
 	char n;
 	scanf("%c", &n);
-	atexit(when_exit);
 }
 
