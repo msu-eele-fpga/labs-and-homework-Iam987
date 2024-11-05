@@ -5,6 +5,10 @@
  * This program will control the leds with various patterns when software control mode is enabled in the fpga via the lightweight bus
  */
  
+ //0xff200000 - hps_led_control (boolean)
+ //0xff200004 - base rate (fixed point u8.4)
+ //0xff200008 - ledpattern (8-bit register)
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -34,7 +38,7 @@ void dvmemusage(){
 }
 
 void when_exit(){
-	//TODO set fpga back to hardware mode
+	devmem(0xff200000, 0x0);
 }
 
 int devmem(int Addr, char **val){
@@ -94,6 +98,6 @@ int main(int argc, char **argv){
 	usage();
 	dvmemusage();
 	atexit(when_exit);
-	//devmem(0xff200000,0x0);
+	devmem(0xff200000,0x1);
 }
 
