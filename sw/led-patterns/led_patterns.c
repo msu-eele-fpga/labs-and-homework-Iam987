@@ -142,7 +142,11 @@ int main(int argc, char **argv){
 			int track = 0;
 			char patterns[100][10]={};
 			while(fgets(S, 6, fptr)){
-				printf("%s\n", S);
+				printf("%s", S);
+				for(int i = 0;i < sizeof(S); i++){
+					patterns[track][i] = S[i];
+				}
+				track++;
 			}
 		}
 		
