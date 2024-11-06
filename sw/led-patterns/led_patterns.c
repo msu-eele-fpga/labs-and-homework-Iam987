@@ -117,9 +117,15 @@ int main(int argc, char **argv){
 		usage();
 		exit(0);
 	}
+	int arraysize = 0;
+	char patterns[100][10] = {};
 	if(termpats){
-		int arraysize = argc - optind;
-		char patterns[arraysize][10] = {};
+		arraysize = argc - optind;
+		if(arraysize % 2 != 0){
+			printf("Incorrect number of arguments given\n");
+			usage();
+			exit(0);
+		}
 		while(optind < argc){
 			for(int i = 0; i < sizeof(argv[optind]); i++){
 				patterns[(argc - optind)-1][i] = argv[(argc - optind)+1][i];
@@ -127,9 +133,9 @@ int main(int argc, char **argv){
 			//printf("%d %d\n", optind, argc);
 			optind++;
 		}
-		for(int i = 0; i < arraysize; i++){
-			printf("%s\n", patterns[i]);
-		}
+		//for(int i = 0; i < arraysize; i++){
+		//	printf("%s\n", patterns[i]);
+		//}
 	}
 	if(filepats){
 		FILE *fptr;
@@ -140,7 +146,7 @@ int main(int argc, char **argv){
 		}
 		else{
 			int track = 0;
-			char patterns[100][10]={};
+			arraysize = 100;
 			while(fgets(S, 6, fptr)){
 				printf("%s", S);
 				for(int i = 0;i < sizeof(S); i++){
@@ -148,11 +154,34 @@ int main(int argc, char **argv){
 				}
 				track++;
 			}
+			arraysize = track;
 		}
-		
 		fclose(fptr);
 	}
-	
+	char pats[arraysize/2][10] = {};
+	int patsind = 0;
+	int durs[arraysize/2] = {};
+	int dursind = 0;
+	for(int i = 0; i < arraysize; i++){
+		if(i % 2 == 0){
+			for(int ii = 0; ii < sizeof(patterns[i]); ii++){
+				pats[patsind][ii] = patterns[i][ii];
+				
+			}
+			patsind++;
+		}
+		else{
+			durs[dursind] = atoi(patterns[i]);
+			dursind++;
+		}
+	}
+	while(1){
+		for(int i = 0; i < arraysize/2; i++){
+			if(verbose){printf("LED pattern =  %08lb, Display duration: %d msec\n", strtol(pats[i],0,16),durs[i]);}
+			devmem("0xff200008", pats[i]);
+			usleep(durs[i] * 1000);
+		}
+	}
 	
 	return 0;
 }
