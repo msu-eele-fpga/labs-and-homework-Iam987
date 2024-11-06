@@ -4,7 +4,7 @@
 In this Lab, I created a `led_patterns.c` program that can drive the leds on board the fpga via the lightweight bus by setting the correct register to the correct values.
 ## Deliverables
 ### Example calculation of component's register addresses:
-`Register2 = Lightweight\_ Bridge\_ Address + Component\_ Address + 2 * 4`  
+`Register2 = Lightweight_ Bridge_ Address + Component_ Address + 2 * 4`  
 `Register3 = 0xFF200000 + 0x0000 + 0x8`  
 `Register3 = 0xFF200008`  
 
