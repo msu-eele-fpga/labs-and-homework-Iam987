@@ -68,7 +68,7 @@ int devmem(char *Addr, char *val){ // I know this function is very ugly, I didn'
 	
 	const uint32_t VALUE = strtoul(val, NULL, 0);
 	*target_virtual_addr = VALUE;
-	fclose(fd);
+	//fclose(fd);
 	return 0;
 }
 
