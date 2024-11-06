@@ -17,6 +17,7 @@
 #include <fcntl.h> //for file open flags
 #include <unistd.h> //for getting the page size
 #include <getopt.h> //for handling options
+#include <signal.h> //for handling ^C
 
 void usage(){
 	fprintf(stderr, "\n\nled_patterns: led_patterns [-options] [filename/pattern+durration,...]\n");
@@ -91,11 +92,12 @@ void when_exit(){
 }
 
 int main(int argc, char **argv){
+	signal(2, when_exit);
 	devmem("0xff200000","0x1");
 	usage();
 	dvmemusage();
-	atexit(when_exit); //Maybe use signal interrupts for ^C
 	char n;
 	scanf("%c", &n);
+	atexit(when_exit);
 }
 
