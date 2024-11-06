@@ -113,13 +113,13 @@ int main(int argc, char **argv){
 	}
 	
 	if(termpats && filepats){ //handle both p & f options
-		fprintf(stderr, "\n\tCannot use both -p and -f options in the same exceution");
+		fprintf(stderr, "\n\tCannot use both -p and -f options in the same exceution\n");
+		usage();
 		exit(0);
 	}
 	if(termpats){
 		int arraysize = argc - optind;
 		char patterns[arraysize][10] = {};
-		//optind++;
 		while(optind < argc){
 			for(int i = 0; i < sizeof(argv[optind]); i++){
 				patterns[(argc - optind)-1][i] = argv[(argc - optind)+1][i];
@@ -130,6 +130,23 @@ int main(int argc, char **argv){
 		for(int i = 0; i < arraysize; i++){
 			printf("%s\n", patterns[i]);
 		}
+	}
+	if(filepats){
+		FILE *fptr;
+		fptr = fopen(argv[optind], "r");
+		char S[6];
+		if(fptr == NULL){
+			printf("unable to open file\n");
+		}
+		else{
+			int track = 0;
+			char patterns[100][10]={};
+			while(fgets(S, 6, fptr)){
+				printf("%s\n", S);
+			}
+		}
+		
+		fclose(fptr);
 	}
 	
 	
