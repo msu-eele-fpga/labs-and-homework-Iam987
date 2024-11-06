@@ -22,4 +22,4 @@ Options:
 The FPGA must be loaded with a bitstream with the following architecture:  
 ![arch diagram](../../docs/assets/Lab4BlockDiagram.svg)  
 >See lab 4 vhdl for an example:  
-[HDL for led patterns](../../hdl/led-patterns)
+[HDL for led patterns](../../hdl/led-patterns)
