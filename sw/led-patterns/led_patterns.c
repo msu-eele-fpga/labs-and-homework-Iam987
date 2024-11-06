@@ -87,6 +87,7 @@ int main(int argc, char **argv){
 	if((c = getopt(argc, argv, "hvpf")) == -1){
 		fprintf(stderr, "Please specify options");
 		usage();
+		exit(0);
 	}
 	while (c != -1){ // Get the options inputed and set variables to reflect the ones chosen
 		switch(c){
@@ -106,6 +107,7 @@ int main(int argc, char **argv){
 			default:
 				printf("?? getopt returned character code %o ??\n", c);
 				fprintf(stderr, "Please specify options");
+				exit(0);
 				usage();
 				break;
 		}
