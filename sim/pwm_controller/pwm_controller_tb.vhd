@@ -18,22 +18,22 @@ architecture pwm_controller_tb_arch of pwm_controller_tb is
 			clk		: in std_logic;
 			rst		: in std_logic;
 			period		: in unsigned(19 downto 0); -- U20.14
-			duty_cycle	: in std_logic_vector(12 downto 0); -- U12.11
+			duty_cycle	: in std_logic_vector(11 downto 0); -- U12.11
 			output		: out std_logic := '0'
 		);
 	end component;
 	
 	signal clk_tb, rst_tb 		: std_logic := '0';
-	signal period_tb		: unsigned(19 downto 0) := "00000000000000000000";
-	signal duty_cycle_tb		: std_logic_vector(12 downto 0) := "0000000000000";
+	signal period_tb		: unsigned(19 downto 0) := "00000000000000000101";
+	signal duty_cycle_tb		: std_logic_vector(11 downto 0) := "000000000001";
 	signal output_tb		: std_logic;
 
 	begin
 	
 		rst_tb <= '1', '0' after 50 ns;
-		clk_tb <= not clk_tb after CLK_PERIOD / 20;
-		period_tb <= period_tb + "1" after 8000 ns;
-		duty_cycle_tb <= std_logic_vector(unsigned(duty_cycle_tb) + "111") after 150 ns;
+		clk_tb <= not clk_tb after CLK_PERIOD / 2;
+		period_tb <= period_tb + "1" after 80000 ns;
+		duty_cycle_tb <= std_logic_vector(shift_left(unsigned(duty_cycle_tb),1)) after 40000 ns;
 		
 		DUT : pwm_controller port map(
 			clk => clk_tb,
