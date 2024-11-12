@@ -9,8 +9,8 @@ entity pwm_controller is
 	port(
 		clk		: in std_logic;
 		rst		: in std_logic;
-		period		: in unsigned(W_PERIOD - 1 downto 0);
-		duty_cycle	: in std_logic_vector(W_DUTY_CYCLE - 1 downto 0);
+		period		: in unsigned(19 downto 0); -- U20.14
+		duty_cycle	: in std_logic_vector(12 downto 0); -- U12.11
 		output		: out std_logic
 	);
 end entity;
