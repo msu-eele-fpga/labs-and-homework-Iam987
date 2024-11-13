@@ -26,7 +26,7 @@ architecture pwm_controller_arch of pwm_controller is
 	signal on_tog		: boolean := false;
 	
 	begin
-		percount <= shift_right(sysclockrate * period,17);
+		percount <= shift_right(sysclockrate * period,24);
 		clkcount1 <= shift_right(percount * unsigned(duty_cycle),11);
 		clkcount2 <= percount - clkcount1;
 		output <= output_midman;
@@ -45,14 +45,14 @@ architecture pwm_controller_arch of pwm_controller is
 							count <= "0000000000000000000000000000000000000000000000000000000000";
 							output_midman <= '0';
 							on_tog <= false;
-						else count <= count + '1';
+						else count <= count + "1";
 						end if;
 					else 
 						if(count >= clkcount2) then
 							count <= "0000000000000000000000000000000000000000000000000000000000";
 							output_midman <= '1';
 							on_tog <= true;
-						else count <= count + '1';
+						else count <= count + "1";
 						end if;
 					end if;
 				end if;
