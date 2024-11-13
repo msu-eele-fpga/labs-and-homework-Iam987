@@ -52,94 +52,94 @@ entity de10nano_top is
     --  DDR3
     --  See DE10 Nano User Manual page 39
     ----------------------------------------
-    --hps_ddr3_addr    : out   std_logic_vector(14 downto 0);
-    --hps_ddr3_ba      : out   std_logic_vector(2 downto 0);
-    --hps_ddr3_cas_n   : out   std_logic;
-    ----hps_ddr3_ck_n    : out   std_logic;
-    --hps_ddr3_ck_p    : out   std_logic;
-    --hps_ddr3_cke     : out   std_logic;
-    --hps_ddr3_cs_n    : out   std_logic;
-    --hps_ddr3_dm      : out   std_logic_vector(3 downto 0);
-    --hps_ddr3_dq      : inout std_logic_vector(31 downto 0);
-    ----hps_ddr3_dqs_n   : inout std_logic_vector(3 downto 0);
-    ----hps_ddr3_dqs_p   : inout std_logic_vector(3 downto 0);
-    --hps_ddr3_odt     : out   std_logic;
-    --hps_ddr3_ras_n   : out   std_logic;
-    --hps_ddr3_reset_n : out   std_logic;
-    --hps_ddr3_rzq     : in    std_logic;
-    --hps_ddr3_we_n    : out   std_logic;
-    --
-    ------------------------------------------
-    ----  Ethernet
-    ----  See DE10 Nano User Manual page 36
-    ------------------------------------------
-    --hps_enet_gtx_clk : out   std_logic;
-    --hps_enet_int_n   : inout std_logic;
-    --hps_enet_mdc     : out   std_logic;
-    --hps_enet_mdio    : inout std_logic;
-    --hps_enet_rx_clk  : in    std_logic;
-    --hps_enet_rx_data : in    std_logic_vector(3 downto 0);
-    --hps_enet_rx_dv   : in    std_logic;
-    --hps_enet_tx_data : out   std_logic_vector(3 downto 0);
-    --hps_enet_tx_en   : out   std_logic;
-    --
-    ------------------------------------------
-    ----  HPS i2c
-    ----  See DE10 Nano User Manual page 34
-    ------------------------------------------
-    --hps_i2c1_sclk : inout std_logic;
-    --hps_i2c1_sdat : inout std_logic;
-    --
-    ------------------------------------------
-    ----  HPS user I/O
-    ----  See DE10 Nano User Manual page 36
-    ------------------------------------------
-    --hps_key : inout std_logic;
-    --hps_led : inout std_logic;
-    --
-    ------------------------------------------
-    ----  HPS SD card
-    ----  See DE10 Nano User Manual page 42
-    ------------------------------------------
-    --hps_sd_clk  : out   std_logic;
-    --hps_sd_cmd  : inout std_logic;
-    --hps_sd_data : inout std_logic_vector(3 downto 0);
-    --
-    ------------------------------------------
-    ----  HPS UART
-    ----  See DE10 Nano User Manual page 38
-    ------------------------------------------
-    --hps_uart_rx    : in    std_logic;
-    --hps_uart_tx    : out   std_logic;
-    --hps_conv_usb_n : inout std_logic;
-    --
-    ------------------------------------------
-    ----  HPS USB OTG
-    ----  See DE10 Nano User Manual page 43
-    ------------------------------------------
-    --hps_usb_clkout : in    std_logic;
-    --hps_usb_data   : inout std_logic_vector(7 downto 0);
-    --hps_usb_dir    : in    std_logic;
-    --hps_usb_nxt    : in    std_logic;
-    --hps_usb_stp    : out   std_logic;
-    --
-    ------------------------------------------
-    ----  HPS accelerometer
-    ----  See DE10 Nano User Manual page 44
-    ------------------------------------------
-    --hps_gsensor_int : inout std_logic;
-    --hps_i2c0_sclk   : inout std_logic;
-    --hps_i2c0_sdat   : inout std_logic;
-    --
-    ------------------------------------------
-    ----  LTC connector
-    ----  See DE10 Nano User Manual page 45
-    ------------------------------------------
-    --hps_ltc_gpio  : inout std_logic;
-    --hps_spim_clk  : out   std_logic;
-    --hps_spim_miso : in    std_logic;
-    --hps_spim_mosi : out   std_logic;
-    --hps_spim_ss   : inout std_logic;
+    hps_ddr3_addr    : out   std_logic_vector(14 downto 0);
+    hps_ddr3_ba      : out   std_logic_vector(2 downto 0);
+    hps_ddr3_cas_n   : out   std_logic;
+    --hps_ddr3_ck_n    : out   std_logic;
+    hps_ddr3_ck_p    : out   std_logic;
+    hps_ddr3_cke     : out   std_logic;
+    hps_ddr3_cs_n    : out   std_logic;
+    hps_ddr3_dm      : out   std_logic_vector(3 downto 0);
+    hps_ddr3_dq      : inout std_logic_vector(31 downto 0);
+    --hps_ddr3_dqs_n   : inout std_logic_vector(3 downto 0);
+    --hps_ddr3_dqs_p   : inout std_logic_vector(3 downto 0);
+    hps_ddr3_odt     : out   std_logic;
+    hps_ddr3_ras_n   : out   std_logic;
+    hps_ddr3_reset_n : out   std_logic;
+    hps_ddr3_rzq     : in    std_logic;
+    hps_ddr3_we_n    : out   std_logic;
+    
+    ----------------------------------------
+    --  Ethernet
+    --  See DE10 Nano User Manual page 36
+    ----------------------------------------
+    hps_enet_gtx_clk : out   std_logic;
+    hps_enet_int_n   : inout std_logic;
+    hps_enet_mdc     : out   std_logic;
+    hps_enet_mdio    : inout std_logic;
+    hps_enet_rx_clk  : in    std_logic;
+    hps_enet_rx_data : in    std_logic_vector(3 downto 0);
+    hps_enet_rx_dv   : in    std_logic;
+    hps_enet_tx_data : out   std_logic_vector(3 downto 0);
+    hps_enet_tx_en   : out   std_logic;
+    
+    ----------------------------------------
+    --  HPS i2c
+    --  See DE10 Nano User Manual page 34
+    ----------------------------------------
+    hps_i2c1_sclk : inout std_logic;
+    hps_i2c1_sdat : inout std_logic;
+    
+    ----------------------------------------
+    --  HPS user I/O
+    --  See DE10 Nano User Manual page 36
+    ----------------------------------------
+    hps_key : inout std_logic;
+    hps_led : inout std_logic;
+    
+    ----------------------------------------
+    --  HPS SD card
+    --  See DE10 Nano User Manual page 42
+    ----------------------------------------
+    hps_sd_clk  : out   std_logic;
+    hps_sd_cmd  : inout std_logic;
+    hps_sd_data : inout std_logic_vector(3 downto 0);
+    
+    ----------------------------------------
+    --  HPS UART
+    --  See DE10 Nano User Manual page 38
+    ----------------------------------------
+    hps_uart_rx    : in    std_logic;
+    hps_uart_tx    : out   std_logic;
+    hps_conv_usb_n : inout std_logic;
+    
+    ----------------------------------------
+    --  HPS USB OTG
+    --  See DE10 Nano User Manual page 43
+    ----------------------------------------
+    hps_usb_clkout : in    std_logic;
+    hps_usb_data   : inout std_logic_vector(7 downto 0);
+    hps_usb_dir    : in    std_logic;
+    hps_usb_nxt    : in    std_logic;
+    hps_usb_stp    : out   std_logic;
+    
+    ----------------------------------------
+    --  HPS accelerometer
+    --  See DE10 Nano User Manual page 44
+    ----------------------------------------
+    hps_gsensor_int : inout std_logic;
+    hps_i2c0_sclk   : inout std_logic;
+    hps_i2c0_sdat   : inout std_logic;
+    
+    ----------------------------------------
+    --  LTC connector
+    --  See DE10 Nano User Manual page 45
+    ----------------------------------------
+    hps_ltc_gpio  : inout std_logic;
+    hps_spim_clk  : out   std_logic;
+    hps_spim_miso : in    std_logic;
+    hps_spim_mosi : out   std_logic;
+    hps_spim_ss   : inout std_logic;
 
     ----------------------------------------
     --  Push button inputs (KEY[0] and KEY[1])
