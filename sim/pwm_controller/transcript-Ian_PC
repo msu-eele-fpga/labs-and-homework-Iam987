@@ -1,0 +1,633 @@
+# Compile of pwm_controller.vhd failed with 2 errors.
+# Compile of pwm_controller.vhd failed with 1 errors.
+# Compile of pwm_controller.vhd was successful with warnings.
+# Compile of pwm_controller.vhd was successful.
+# Compile of pwm_controller.vhd was successful.
+# Compile of assert_pkg.vhd failed with 31 errors.
+# Compile of print_pkg.vhd failed with 3 errors.
+# Compile of tb_pkg.vhd was successful.
+# Compile of pwm_controller_tb.vhd failed with 3 errors.
+# 5 compiles, 3 failed with 37 errors.
+# Compile of pwm_controller.vhd was successful.
+# Compile of assert_pkg.vhd was successful.
+# Compile of print_pkg.vhd was successful.
+# Compile of tb_pkg.vhd was successful.
+# Compile of pwm_controller_tb.vhd failed with 1 errors.
+# 5 compiles, 1 failed with 1 error.
+# Compile of pwm_controller.vhd was successful.
+# Compile of assert_pkg.vhd was successful.
+# Compile of print_pkg.vhd was successful.
+# Compile of tb_pkg.vhd was successful.
+# Compile of pwm_controller_tb.vhd failed with 2 errors.
+# 5 compiles, 1 failed with 2 errors.
+# Compile of pwm_controller.vhd was successful.
+# Compile of assert_pkg.vhd was successful.
+# Compile of print_pkg.vhd was successful.
+# Compile of tb_pkg.vhd was successful.
+# Compile of pwm_controller_tb.vhd failed with 4 errors.
+# 5 compiles, 1 failed with 4 errors.
+# Compile of pwm_controller.vhd was successful.
+# Compile of pwm_controller_tb.vhd failed with 3 errors.
+# Compile of pwm_controller_tb.vhd failed with 4 errors.
+# Compile of pwm_controller_tb.vhd was successful.
+# Optimization canceled
+# Optimization canceled
+vsim work.pwm_controller_tb
+# vsim work.pwm_controller_tb 
+# Start time: 09:35:58 on Nov 12,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+add wave sim:/pwm_controller_tb/*
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of pwm_controller.vhd was successful.
+# Compile of pwm_controller_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.pwm_controller_tb -voptargs=+acc
+# End time: 09:38:58 on Nov 12,2024, Elapsed time: 0:03:00
+# Errors: 0, Warnings: 26
+# vsim work.pwm_controller_tb -voptargs="+acc" 
+# Start time: 09:38:58 on Nov 12,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+# Loading work.pwm_controller(pwm_controller_arch)#1
+add wave -position end  sim:/pwm_controller_tb/clk_tb
+add wave -position end  sim:/pwm_controller_tb/rst_tb
+add wave -position end  sim:/pwm_controller_tb/period_tb
+add wave -position end  sim:/pwm_controller_tb/duty_cycle_tb
+add wave -position end  sim:/pwm_controller_tb/output_tb
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of pwm_controller_tb.vhd was successful.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+# Loading work.pwm_controller(pwm_controller_arch)#1
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of pwm_controller.vhd was successful.
+# Compile of assert_pkg.vhd was successful.
+# Compile of print_pkg.vhd was successful.
+# Compile of tb_pkg.vhd was successful.
+# Compile of pwm_controller_tb.vhd was successful.
+# 5 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+# Loading work.pwm_controller(pwm_controller_arch)#1
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+add wave -position end  sim:/pwm_controller_tb/DUT/clkcount
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+add wave -position 4  sim:/pwm_controller_tb/DUT/count
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of pwm_controller.vhd was successful.
+# Compile of pwm_controller_tb.vhd was successful.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+# Loading work.pwm_controller(pwm_controller_arch)#1
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of pwm_controller.vhd was successful.
+# Compile of pwm_controller_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# do_write(): BLOCKFILE ERROR (write): unexpected error (errno = 22)
+# do_write(): BLOCKFILE ERROR (write): unexpected error (errno = 22)
+# do_write(): BLOCKFILE ERROR (write): unexpected error (errno = 22)
+# ** Error: (vopt-10) Problem closing asm file "C:/Users/iancr/OneDrive/Desktop/SoC FPGAs/git_Labs_HW/labs-and-homework-Iam987/sim/pwm_controller/work/@_opt1/voptyimkh3".
+# Invalid argument. (errno = EINVAL)
+# ** Note: C:/Users/iancr/OneDrive/Desktop/SoC FPGAs/git_Labs_HW/labs-and-homework-Iam987/sim/pwm_controller/pwm_controller_tb.vhd(45): Vopt Compiler exiting
+# ** Error: (vopt-2064) Compiler back-end code generation process terminated with code 7.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=2, Warnings=1.
+vsim -voptargs=+acc work.pwm_controller_tb
+# vsim -voptargs="+acc" work.pwm_controller_tb 
+# Start time: 09:38:58 on Nov 12,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=2, Warnings=2.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+# Loading work.pwm_controller(pwm_controller_arch)#1
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of pwm_controller_tb.vhd was successful.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+# Loading work.pwm_controller(pwm_controller_arch)#1
+run
+# Break key hit
+# Simulation stop requested.
+run
+# Break key hit
+# Simulation stop requested.
+run
+# Break key hit
+# Simulation stop requested.
+# Compile of pwm_controller_tb.vhd was successful.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+# Loading work.pwm_controller(pwm_controller_arch)#1
+run
+#############  Autofindloop Analysis  ###############
+#############  Loop found at time 0 ns ###############
+#   ByteEvent process: /pwm_controller_tb/line__34 @ sub-iteration 0 to value HiZ
+#     Source: C:/Users/iancr/OneDrive/Desktop/SoC FPGAs/git_Labs_HW/labs-and-homework-Iam987/sim/pwm_controller/pwm_controller_tb.vhd:34
+#   ByteEvent process: /pwm_controller_tb/line__34 @ sub-iteration 1 to value HiX
+#     Source: C:/Users/iancr/OneDrive/Desktop/SoC FPGAs/git_Labs_HW/labs-and-homework-Iam987/sim/pwm_controller/pwm_controller_tb.vhd:34
+#   ByteEvent process: /pwm_controller_tb/line__34 @ sub-iteration 2 to value HiZ
+#     Source: C:/Users/iancr/OneDrive/Desktop/SoC FPGAs/git_Labs_HW/labs-and-homework-Iam987/sim/pwm_controller/pwm_controller_tb.vhd:34
+################# END OF LOOP #################
+# ** Error (suppressible): (vsim-3601) Iteration limit 10000000 reached at time 0 ns.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Compile of pwm_controller_tb.vhd was successful.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+# Loading work.pwm_controller(pwm_controller_arch)#1
+run
+# Break key hit
+# Simulation stop requested.
+# Compile of pwm_controller_tb.vhd was successful.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+# Loading work.pwm_controller(pwm_controller_arch)#1
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+run
+# Compile of pwm_controller_tb.vhd was successful.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.fixed_float_types
+# Loading ieee.math_real(body)
+# Loading ieee.fixed_generic_pkg(body)
+# Loading ieee.float_generic_pkg(body)
+# Loading ieee.fixed_pkg
+# Loading ieee.float_pkg
+# Loading work.assert_pkg(body)
+# Loading work.print_pkg(body)
+# Loading work.tb_pkg(body)
+# Loading work.pwm_controller_tb(pwm_controller_tb_arch)#1
+# Loading work.pwm_controller(pwm_controller_arch)#1
+run
+run
+run
+run
+# Compile of pwm_controller.vhd was successful.
