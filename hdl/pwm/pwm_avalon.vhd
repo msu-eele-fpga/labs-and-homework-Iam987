@@ -15,9 +15,9 @@ entity led_patterns_avalon is
 		avs_writedata	: in std_logic_vector(31 downto 0);
 		
 		-- external I/O; export to top-level
-		red_pwm_signal 		: out std_logic;
-		green_pwm_signal 	: out std_logic;
-		blue_pwm_signal 	: out std_logic;
+		red_pwm_signal 		: out std_ulogic;
+		green_pwm_signal 	: out std_ulogic;
+		blue_pwm_signal 	: out std_ulogic
 	);
 end entity;
 
@@ -30,9 +30,6 @@ architecture led_patterns_avalon_arch of led_patterns_avalon is
 	
 	
 	component pwm_controller is
-		generic(
-			CLK_PERIOD 	: time := 20 ns
-		);
 		port(
 			clk		: in std_logic;
 			rst		: in std_logic;
@@ -60,9 +57,10 @@ architecture led_patterns_avalon_arch of led_patterns_avalon is
 	avalon_register_write : process(clk, rst) is
 		begin
 			if(rst = '1') then
-				hps_led_control <= false;
-				base_period <= "00000100";
-				led_reg <= "00000000";
+				duty_cycle_r	<= "010000000000";
+				duty_cycle_g	<= "010000000000";
+				duty_cycle_b	<= "010000000000";
+				pwm_period 	<= "10000000000000000000";
 			elsif (rising_edge(clk) and avs_write = '1') then
 				case avs_address is
 					when "00"	=> duty_cycle_r <= avs_writedata(11 downto 0);
@@ -97,5 +95,4 @@ architecture led_patterns_avalon_arch of led_patterns_avalon is
 		duty_cycle => duty_cycle_b,
 		output => blue_pwm_signal
 	);
-	
 end architecture;
