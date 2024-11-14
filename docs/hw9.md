@@ -1,4 +1,4 @@
-# Homework 7 Linux CLI Practice
+# Homework 9 PWM Controller VHDL
 ## Overview
 In this Homework, I created vhdl to control the ouput of a gpio pin with pwm.
 ## Deliverables
