@@ -3,9 +3,9 @@
 #include <linux/mod_devicetable.h> //of_device_id,MODULE_DEVICE_TABLE
 #include <linux/io.h> //iowrite32/ioread32 functions
 
-#define BASE_PERIOD_OFFSET = 4
-#define HPS_LED_CONTROL_OFFSET = 0
-#define LED_REG_OFFSET = 8
+#define BASE_PERIOD_OFFSET 4
+#define HPS_LED_CONTROL_OFFSET 0
+#define LED_REG_OFFSET 8
 
 /**
  * struct led_patterns_dev - Private led patterns device struct.
