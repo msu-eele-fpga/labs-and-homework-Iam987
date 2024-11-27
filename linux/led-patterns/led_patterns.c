@@ -21,6 +21,8 @@ struct led_patterns_dev {
 	void __iomem *hps_led_control;
 	void __iomem *base_period;
 	void __iomem *led_reg;
+	struct miscdevice miscdev;
+	struct mutex lock;
 };
 
 /**
@@ -35,6 +37,7 @@ struct led_patterns_dev {
  */
 static int led_patterns_probe(struct platform_device *pdev){
 	struct led_patterns_dev *priv;
+	size_t ret;
 	
 	/*
 	 * Allocate kernel memory for the led patterns device and set it to 0.
@@ -70,6 +73,19 @@ static int led_patterns_probe(struct platform_device *pdev){
 	iowrite32(1, priv->hps_led_control);
 	iowrite32(0xff, priv->led_reg);
 	
+	//Initialize the misc device parameters
+	priv->miscdev.minor = MISC_DYNAMIC_MINOR;
+	priv->miscdev.name = "led_patterns";
+	priv->miscdev.fops = &led_patterns_fops;
+	priv->miscdev.parent = &pdev->dev;
+
+	//Register the misc device; this creates a char dev at /dev/led_patterns
+	ret = misc_register(&priv->miscdev);
+	if(ret){
+		pr_err("Failed to register misc device");
+		return ret;
+
+
 	/* Attach the led pattern's private data to the platform device's struct.
 	 * This is so we can access our state container in the other functions.
 	 */
@@ -92,6 +108,8 @@ static int led_patterns_remove(struct platform_device *pdev){
 	
 	// Disable software-control mode, just for laughs.
 	iowrite32(0, priv->hps_led_control);
+	// Deregister the misc device and remove the /dev/led_patterns file.
+	misc_deregister(&priv->miscdev);
 	pr_info("led_patterns_remove successful\n");
 	return 0;
 }
