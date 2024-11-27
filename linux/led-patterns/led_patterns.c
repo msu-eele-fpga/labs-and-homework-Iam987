@@ -2,24 +2,6 @@
 #include <linux/platform_device.h> //platform driver/ device definitions
 #include <linux/mod_devicetable.h> //of_device_id,MODULE_DEVICE_TABLE
 
-/*
- * struct led_patterns_driver - Platform driver struct for the led patterns driver
- * @probe: Function that's called when a device is found
- * @remove: Function that's called when a device is removed
- * @driver.owner: Which module owns this driver
- * @driver.name: Name of the led_patters driver
- * @driver.of_match_table: Device tree match table
- */
-static struct platform_driver led_patterns_driver = {
-	.probe = led_patterns_probe,
-	.remove = led_patterns_remove,
-	.driver = {
-		.owner = THIS_MODULE,
-		.name = "led_patterns",
-		.of_match_table = led_patterns_of_match,
-	},
-};
-
 /**
  * led_patterns_probe() - Initialize device when a match is found
  * @pdev: Platform device structure associated with our led patters device;
@@ -59,15 +41,22 @@ static const struct of_device_id led_patterns_of_match[] = {
 };
 MODULE_DEVICE_TABLE(of, led_patterns_of_match);
 
-struct platform_driver{
-	int (*probe)(struct platform_driver *);
-	int (*remove)(struct platform_driver *);
-	void (*shutdown)(struct platform_driver *);
-	int (*suspend)(struct platform_driver *, pm_message_t state);
-	int (*resume)(struct platform_driver *);
-	struct device_driver driver;
-	const struct platform_device_id *id_table;
-	bool prevent_deferred_probe;
+/*
+ * struct led_patterns_driver - Platform driver struct for the led patterns driver
+ * @probe: Function that's called when a device is found
+ * @remove: Function that's called when a device is removed
+ * @driver.owner: Which module owns this driver
+ * @driver.name: Name of the led_patters driver
+ * @driver.of_match_table: Device tree match table
+ */
+static struct platform_driver led_patterns_driver = {
+	.probe = led_patterns_probe,
+	.remove = led_patterns_remove,
+	.driver = {
+		.owner = THIS_MODULE,
+		.name = "led_patterns",
+		.of_match_table = led_patterns_of_match,
+	},
 };
 
 /*
