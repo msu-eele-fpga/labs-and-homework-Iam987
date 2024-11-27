@@ -36,7 +36,7 @@ static int led_patterns_remove(struct platform_device *pdev){
  * compatible string as defined here.
  */
 static const struct of_device_id led_patterns_of_match[] = {
-	{ .compatible = "crittenden,ledpatterns", },
+	{ .compatible = "crittenden,led_patterns", },
 	{ }
 };
 MODULE_DEVICE_TABLE(of, led_patterns_of_match);
