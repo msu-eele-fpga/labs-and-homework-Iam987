@@ -53,35 +53,231 @@ int main () {
 
 	// Write some values to the LEDs
 	printf("writing patterns to LEDs....\n");
-	val = 0x55;
-    ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
-	ret = fwrite(&val, 4, 1, file);
-	printf("Wrote first pattern\n");
-	fflush(file);
-	printf("flushed the file");
-
-	sleep(1);
-	printf("writing next pattern");
-	val = 0xaa;
-    ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
-	ret = fwrite(&val, 4, 1, file);
-	fflush(file);
-
-	sleep(1);
-
-	val = 0xff;
-    ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
-	ret = fwrite(&val, 4, 1, file);
-	fflush(file);
-
-	usleep(0.5e6);
-
-	val = 0x00;
-    ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
-	ret = fwrite(&val, 4, 1, file);
-	fflush(file);
-
-	sleep(1);
+	while(1){
+		val = 0b00000000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00000001;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00000011;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00000111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00001111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00011111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00111111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b01111111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11111111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11111110;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11111100;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11111000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11110000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11100000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11000000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b10000000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00000000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b10000000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11000000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11100000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11110000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11111000;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11111100;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11111110;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b11111111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b01111111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00111111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00011111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00001111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00000111;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00000011;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+		
+		val = 0b00000001;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+		
+		usleep(0.5e5);
+	}
 
 	// Turn on hardware-control mode
 	printf("back to hardware-control mode....\n");
