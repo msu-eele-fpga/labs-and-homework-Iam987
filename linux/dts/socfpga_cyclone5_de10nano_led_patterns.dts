@@ -1,8 +1,8 @@
 #include "socfpga_cyclone5_de10nano.dtsi"
 
 /{
-	led_patterns: led_patterns@ff200020 {
+	led_patterns: led_patterns@ff200000 {
 		compatible = "crittenden,led_patterns";
-		reg = <0xff200020 16>;
+		reg = <0xff200000 16>;
 	};
 };

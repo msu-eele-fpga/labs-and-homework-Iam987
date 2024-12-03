@@ -10,6 +10,7 @@
 #define BASE_PERIOD_OFFSET 4
 #define HPS_LED_CONTROL_OFFSET 0
 #define LED_REG_OFFSET 8
+#define SPAN 16 //address Span of the device
 
 /**
  * struct led_patterns_dev - Private led patterns device struct.
@@ -86,7 +87,7 @@ static ssize_t led_patterns_read(struct file *file, char __user *buf, size_t cou
  *
  * Return: On success, the number of bytes writed is returned and the offset @offset is advanced by this number. On error, a negative error value is returned.
  */
-static ssize_t led_patterns_write(static file *file, const char __user *buf, size_t count, loff_t *offset){
+static ssize_t led_patterns_write(struct file *file, const char __user *buf, size_t count, loff_t *offset){
 	size_t ret;
 	u32 val;
 	
@@ -202,6 +203,7 @@ static int led_patterns_probe(struct platform_device *pdev){
 	if(ret){
 		pr_err("Failed to register misc device");
 		return ret;
+	}
 
 
 	/* Attach the led pattern's private data to the platform device's struct.

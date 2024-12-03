@@ -6,8 +6,8 @@
 #include <unistd.h>
 
 // TODO: update these offsets if your address are different
-#define HPS_LED_CONTROL_OFFSET 0x0
-#define BASE_PERIOD_OFFSET 0x4
+#define HPS_LED_CONTROL_OFFSET 0x00
+#define BASE_PERIOD_OFFSET 0x04
 #define LED_REG_OFFSET 0x08
 
 int main () {
@@ -56,10 +56,12 @@ int main () {
 	val = 0x55;
     ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
 	ret = fwrite(&val, 4, 1, file);
+	printf("Wrote first pattern\n");
 	fflush(file);
+	printf("flushed the file");
 
 	sleep(1);
-
+	printf("writing next pattern");
 	val = 0xaa;
     ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
 	ret = fwrite(&val, 4, 1, file);
