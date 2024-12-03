@@ -67,7 +67,7 @@ architecture Clockgen_arch of Clockgen is
 						base_clock <= not base_clock;
 					else cb <= cb + 1;
 					end if;
-					if(cu > to_integer(shift_left(baseclk,4))) then
+					if(cu > to_integer(shift_right(baseclk,4))) then
 						cu <= 0;
 						base_clock_user <= not base_clock_user;
 					else cu <= cu + 1;
