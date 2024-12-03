@@ -302,21 +302,6 @@ struct device_attribute *attr, char *buf)
  }
 
 
-// Define sysfs attributes
-static DEVICE_ATTR_RW(hps_led_control);
-static DEVICE_ATTR_RW(base_period);
-static DEVICE_ATTR_RW(led_reg);
-
-// Create an attribute group so the device core can
-// export the attributes for us.
-static struct attribute *led_patterns_attrs[] = {
-&dev_attr_hps_led_control.attr,
-&dev_attr_base_period.attr,
-&dev_attr_led_reg.attr,
-NULL,
-};
-ATTRIBUTE_GROUPS(led_patterns);
-
 
  /**
 * hps_led_control_show() - Return the hps_led_control value
@@ -428,6 +413,21 @@ ATTRIBUTE_GROUPS(led_patterns);
 	return size;
  }
 
+
+// Define sysfs attributes
+static DEVICE_ATTR_RW(hps_led_control);
+static DEVICE_ATTR_RW(base_period);
+static DEVICE_ATTR_RW(led_reg);
+
+// Create an attribute group so the device core can
+// export the attributes for us.
+static struct attribute *led_patterns_attrs[] = {
+&dev_attr_hps_led_control.attr,
+&dev_attr_base_period.attr,
+&dev_attr_led_reg.attr,
+NULL,
+};
+ATTRIBUTE_GROUPS(led_patterns);
 
 
  static struct platform_driver led_patterns_driver = {
