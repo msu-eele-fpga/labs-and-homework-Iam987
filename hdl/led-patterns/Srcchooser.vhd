@@ -70,6 +70,9 @@ architecture Srcchooser_arch of Srcchooser is
 					when s0 => led <= cur_pat;
 					when s1 => led <= led_reg(6 downto 0);
 				end case;
+				if(hps_led_control) then
+					led <= led_reg(6 downto 0);
+				end if;
 		end process;
 	
 		TIMEHELP : process(clk)
